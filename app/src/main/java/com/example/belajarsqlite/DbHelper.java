@@ -43,10 +43,7 @@ public class DbHelper extends SQLiteOpenHelper {
 
         long stts = db.insert(TABLE_NAME, null, cv);
 
-        if (stts == -1)
-            return false;
-        else
-            return true;
+        return stts != -1;
 
     }
 
@@ -60,8 +57,8 @@ public class DbHelper extends SQLiteOpenHelper {
 
         if(cursor.getCount() > 0){
             while(cursor.moveToNext()){
-                int id = cursor.getInt(0);
-                String nama = cursor.getString(1);
+                int id = cursor.getInt (0);
+                String nama = id + ". " + cursor.getString(1);
                 String nim = cursor.getString(2);
                 String noHp = cursor.getString(3);
 
